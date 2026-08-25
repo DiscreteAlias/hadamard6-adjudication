@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+*.swp
+
+# The paper is someone else's copyright. Track it by arXiv id, not by blob.
+paper/*.pdf
