@@ -20,3 +20,12 @@ algebraically from a suitable corner; the classification is complete.
 ---
 
 **Status taxonomy:** PROVEN / CLAIMED / NUMERICAL *(dead reckoning)* / FOLKLORE / REFUTED
+
+---
+
+**Note — harness dependency (not a claim about the paper):** every MECH
+verdict here that calls `is_hadamard`/`defect` from `checks/lib/hadamard.py`
+relies on the H6-H4/H6-H5 sound-path fix landed in commit `a2e38a7` (see
+`slag/harness-defects.md`). Verdicts computed before that commit against the
+unfixed heuristic-only path are covered by the H6-H5 addendum's
+contamination audit, not restated here.
