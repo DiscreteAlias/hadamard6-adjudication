@@ -259,3 +259,42 @@ relations for paired roots encode all pairings.
 
 **Status:** FIXED in `checks/lib/g6point.py`; transcription audit (code vs
 .tex, 16/16 exact matches) recorded in the final report.
+
+---
+
+## H6-H8 — lib self-test never fails the process
+
+**Found:** 2026-08-26, Track A, during the H6-H5/H6-H4 harness fix.
+
+**What:** `checks/lib/hadamard.py`'s `if __name__ == "__main__":` block
+decided pass/fail by building a string ("OK" / "MISMATCH (expected ...)")
+and printing it. No `assert`, no `sys.exit`, no exception on a failed
+comparison — the script always returned exit code 0, regardless of whether
+any anchor actually held.
+
+**Evidence:** read directly, not inferred: the block's only failure signal
+was an f-string ternary assigned to a `flag` variable and printed; nothing
+in the file called `sys.exit` or raised on a mismatch.
+
+**Blast radius:** root `README.md`'s documented contract (`python3
+checks/lib/hadamard.py` "exits nonzero if the harness is broken") and
+`CLAUDE.md`'s "Run `python3 checks/lib/hadamard.py` before trusting any
+check" were both false from the moment the file was created. Any gate —
+bootstrap, pre-commit, or otherwise — that aborted on this script's exit
+code before proceeding could never have fired; that gate has been
+decorative since the repo was created. Second-order cause of H6-H1..H6-H3:
+even had the original self-test carried identity anchors instead of only
+distinctness anchors, a failing one would still have printed "MISMATCH" and
+exited 0.
+
+**caught_by:** this session, reading the block directly rather than
+trusting the documented contract.
+**should_have_been_caught_by:** a deliberate red test — break an anchor on
+purpose, confirm the script's exit code actually goes nonzero.
+
+**Status:** FIXED in `checks/lib/hadamard.py`, same commit as H6-H4/H6-H5 —
+the self-test now accumulates failures and calls `sys.exit(1)` when any
+anchor fails, `sys.exit(0)` otherwise. Verified directly before that commit:
+deliberately broke the F6-defect anchor, confirmed the process exited 1
+with the broken anchor named in the output, restored it, confirmed a clean
+exit 0.
