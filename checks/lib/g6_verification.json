@@ -1,0 +1,9 @@
+{
+ "verified": true,
+ "hadamard": true,
+ "defect": "computing \u2014 exact fraction-free elimination in progress (pivot 4/~21 at wrap time)",
+ "date": "2026-08-26",
+ "source": "arXiv:1008.0632v1, section 'A generic matrix'",
+ "hadamard_certificates": "36 unimodularity + 15 Gram residuals, all NF-zero in the tower quotient (monic lex cascade, coupler-eliminated T1); denominators and cascade lead coefficients certified nonzero by exact rational interval boxes",
+ "transcription_audit": "16/16 printed data items byte-match arXiv:1008.0632v1 source (exact polynomial comparison, 2026-08-26)"
+}
