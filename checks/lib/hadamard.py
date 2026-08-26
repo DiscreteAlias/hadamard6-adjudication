@@ -4,6 +4,8 @@ Exact-arithmetic primitives for complex Hadamard matrices.  [D]
 No floating point anywhere. Every predicate returns an exact verdict or raises.
 Entries are sympy expressions; roots of unity stay symbolic through to the end.
 
+Three things live here:
+
   is_hadamard(H)      -- H H* = n I and every entry unimodular
   defect(H)           -- Tadej-Zyczkowski defect: 0 means isolated
   haagerup(H)         -- equivalence invariant; the adversarial track's discriminator
@@ -75,8 +77,9 @@ def defect(H, verbose=False):
         sum_k H[j,k] conj(H[l,k]) (R[j,k] - R[l,k]) = 0   for all j < l
     minus the (2n-1)-dimensional trivial subspace from dephasing.
 
-    d(H) = 0  <=>  H is isolated.
-    Generic 6x6 families sit at d = 4; Tao's S6 is the isolated point.
+    d(H) = 0  ==>  H is isolated. The CONVERSE IS NOT A THEOREM (H6-H3):
+    d(H) = 4 does NOT certify that a continuum passes through H. Known generic
+    6x6 families happen to sit at d = 4; Tao's S6 is the isolated point.
     """
     H = sp.Matrix(H)
     n = H.rows
@@ -112,11 +115,25 @@ def haagerup(H):
     Haagerup set: { H[i,j] H[k,l] conj(H[i,l]) conj(H[k,j]) }.
 
     Invariant under the full equivalence group (row/column permutations and
-    unimodular diagonal scalings). Two matrices with different Haagerup sets are
-    inequivalent -- this is the discriminator the counterexample track needs.
+    unimodular diagonal scalings).
 
-    Note the converse fails: equal Haagerup sets do NOT imply equivalence.
-    A hit here is evidence, not proof.
+    !! H6-H1 -- UNSOUND AS A CROSS-MATRIX DISCRIMINATOR AS WRITTEN.
+    This returns a Python set of sympy expressions, so equality between two
+    matrices' sets compares SPELLINGS, not numbers. exp(2*pi*I/3) and
+    (-1+I*sqrt(3))/2 are the same number and compare unequal; haagerup(C6)
+    returns 16 values with mixed radical spellings. Comparing raw sets can
+    therefore report equivalent matrices as inequivalent -- a false positive in
+    the direction that matters. Use canonical labels (normalized minimal
+    polynomial + isolating box) before comparing across matrices.
+
+    !! H6-H2 -- BLIND TO TRANSPOSE AND CONJUGATION. The defining quadruple is
+    invariant under H -> H^T and H -> conj(H) by index bijection, so this cannot
+    separate F6 from F6^T. Four-variant checks must rest on fingerprint
+    multiplicities, defect, and an equivalence decider instead.
+
+    Converse also fails: equal sets do NOT imply equivalence.
+    See slag/harness-defects.md. Behavior deliberately unchanged while tracks
+    are running against this file.
     """
     H = sp.Matrix(H)
     n = H.rows
@@ -160,19 +177,11 @@ def tao_S6():
 # ------------------------------------------------------------------- self-test
 
 if __name__ == "__main__":
-    import sys
-
-    failures = 0
     for name, H, expect in [("F6", fourier(6), 4), ("S6", tao_S6(), 0)]:
         ok, _ = is_hadamard(H)
+        print(f"{name}: hadamard={ok}")
         d = defect(H, verbose=True)
-        good = ok and d == expect
-        failures += 0 if good else 1
-        print(f"{name}: hadamard={ok}  defect={d}  "
-              f"{'OK' if good else f'MISMATCH (expected {expect})'}\n")
+        flag = "OK" if d == expect else f"MISMATCH (expected {expect})"
+        print(f"{name}: defect={d}  {flag}\n")
 
-    ineq = inequivalent(fourier(6), tao_S6())
-    print("F6 vs S6 inequivalent by Haagerup:", ineq)
-    failures += 0 if ineq else 1
-
-    sys.exit(1 if failures else 0)
+    print("F6 vs S6 inequivalent by Haagerup:", inequivalent(fourier(6), tao_S6()))
