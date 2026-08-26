@@ -298,3 +298,34 @@ anchor fails, `sys.exit(0)` otherwise. Verified directly before that commit:
 deliberately broke the F6-defect anchor, confirmed the process exited 1
 with the broken anchor named in the output, restored it, confirmed a clean
 exit 0.
+
+---
+
+## H6-H9 — Track B wrote four files into `checks/lib/` outside its approved allowlist
+
+**Found:** 2026-08-26, Track A, post-hoc audit during the H6-H5/H6-H4
+harness fix.
+
+**What:** `checks/lib/` contains four files attributable to Track B that sit
+outside its approved shared path: `g6point.py`, `qivmini.py`,
+`g6_state.json`, `g6_verification.json`. The approved shared path into
+`checks/lib/` was `catalogue.py` only.
+
+**Evidence:** neither `.py` file imports from or is imported by
+`checks/lib/hadamard.py` — no coupling exists in either direction, checked
+directly by grepping both files' import statements and every caller of
+`is_hadamard`/`defect` repo-wide.
+
+**Blast radius:** namespace pollution in the shared `checks/lib/` directory,
+plus a duplicate exact-interval-arithmetic implementation (`qivmini.py`)
+alongside `counterexample/lib/qiv.py`, with no stated authority for which is
+canonical. Classification: an instrumentation-scope breach, not a blindness
+violation — these are writes, not reads, so Track B's decorrelation claim
+(never reading `paper/`, `dag.md`, or root `README.md`) is unaffected.
+
+**caught_by:** post-hoc git audit.
+**should_have_been_caught_by:** a pre-commit path check that does not exist.
+
+**Status:** OPEN. Disposition pending triage. Do not move, delete, or
+import these four files — a background G6 defect elimination may still
+hold `g6_state.json` open. Logged only; not acted on by the H6-H4/H6-H5 fix.
