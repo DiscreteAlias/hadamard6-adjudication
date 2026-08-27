@@ -72,3 +72,42 @@ AUDIT GAP UNCHANGED after all corrections: the same eleven nodes
   (C26, D20, D23, P24, P25, S15, S16, S17, S18, S19, T22) sit in the C26
   cone but outside the Lean-audited C19 chain. The deliverable survives the
   U2 correction.e VERIFY.md.
+
+
+────────────────────────────────────────────────────────────────
+CORRECTION to the V3 note above (2026-08-26, issued after V1)
+────────────────────────────────────────────────────────────────
+
+The p34 resolution recorded above is WRONG and is retained only as a
+record of what was believed.
+
+V3 asserted: "S.6 is stated at the end of p33; its proof runs pp33-34.
+The paper omits the closing box, which made the proof appear to continue
+onto p35."
+
+Actual: S.6's proof is five sentences and ends on p33. p34 opens a new
+section, "B. Generic quadratic-cubic algebraic cover", and contains
+(S.2.16)-(S.2.24) -- the self-inversive cubic, the uncancelled linear
+relation, the reciprocal fundamental sextic, and the product quadratic.
+Verified by direct page-boundary extraction:
+  pdftotext -f 33 -l 34 paper/2608.18053v1.pdf -
+
+Consequences:
+  - The "proof pp33-34" span V3 wrote into dag.md was fabricated. Reverted
+    to "(statement p33, proof p33)".
+  - The p34 coverage gap V3 believed it closed was never closed. p34 holds
+    Sec. II B's defining machinery, which S7, S4 and D20 all depend on by
+    equation range while no row's page field claimed it. S7's page ref now
+    claims it.
+  - No unnumbered claim on p34; the omission risk there is resolved
+    negatively, but for a different reason than V3 recorded.
+
+How it was caught: V1, a fresh session on a different model, framed to
+break rows rather than confirm them, using full-text extraction rather
+than manual reading. See verification/v1-fidelity.md, finding V1-3.
+
+Origin: V3 was a manual read by the run owner. The false span was written
+on the strength of that read without checking the page boundary. This is a
+verification pass introducing a defect into the artifact it was verifying
+-- the reason V1 is required to be independent and adversarial.
+────────────────────────────────────────────────────────────────
