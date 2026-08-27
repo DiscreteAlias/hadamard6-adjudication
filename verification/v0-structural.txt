@@ -1,25 +1,74 @@
 # DAG audit — dag.md
 
-rows: 48   buckets: {'DEF': 8, 'MECH': 11, 'ARG': 27, 'IMPORT': 2}
+rows: 49   buckets: {'DEF': 8, 'MECH': 12, 'ARG': 27, 'IMPORT': 2}
 counter[main]: 1..26 — dense, no gaps
 counter[supplement]: 1..20 — dense, no gaps
 cycles: 0   dangling refs: 0   duplicate ids: 0
 
-C26 cone: 34 of 48 nodes
-  outside the cone (14): D3 S10 S11 S12 S13 S14 S20 S5 S6 S7 S8 S9 T21 U2
-  orphans (nothing depends on them): D3 S12 S14 S20 T21 U2
+C26 cone: 34 of 49 nodes
+  outside the cone (15): D3 S10 S11 S12 S13 S14 S20 S5 S6 S7 S8 S9 T21 U2 U3
+  orphans (nothing depends on them): D3 S12 S14 S20 T21 U2 U3
 
 audit gap — in C26 cone but not under C19 (11):
   C26[ARG]  D20[DEF]  D23[IMPORT]  P24[ARG]  P25[ARG]  S15[ARG]  S16[ARG]  S17[MECH]  S18[ARG]  S19[ARG]  T22[ARG]
 
-MECH nodes outside the cone (verifying these proves nothing about C26): D3 S10 S13 S5 S7
+MECH nodes outside the cone (verifying these proves nothing about C26): D3 S10 S13 S5 S7 U3
 
-page coverage: 46/50 pages claimed by some node
+page coverage: 48/50 pages claimed by some node
   UNCOVERED (omission risk — nothing in the DAG describes these):
     p 1
-    p 34
-    p 41
     p 50
 
 STRUCTURAL PASS
-NOT CHECKED: fidelity of any row to the paper. See VERIFY.md.
+
+────────────────────────────────────────────────────────────────
+V3 — page-gap resolution and DAG repair (2026-08-26, manual)
+────────────────────────────────────────────────────────────────
+
+p 34 — RESOLVED, citation imprecision only.
+  S.6 is stated at the end of p33; its proof runs pp33-34. The paper omits
+  the closing box, which made the proof appear to continue onto p35. S.7
+  starts clean on p35 and ends there. No unmodeled content.
+  Fix: S6 page ref -> "statement p33, proof pp33-34".
+
+p 41 — NOT EMPTY. Three findings:
+  (a) The definitional passage for G6^(4) lives here — "Following Szollosi,
+      let G6^(4) denote the non-Karlsson, non-Tao classes actually retained
+      by Steps 1-8 of his Construction 3.1", with the explicit argument that
+      this is the published construction output and not the paper's own
+      completed output under another name. That is D23's content, on a page
+      D23 did not cite. D23 is the IMPORT node and one of the eleven
+      audit-gap nodes; its fidelity to Construction 3.1 is the question that
+      decides the headline claim.
+      Fix: D23 page ref -> "(p12; definitional passage p41; recalled p48)".
+  (b) Unnumbered claim at (S.2.65): dim_R(K6^(3) INTERSECT A6,reg^fc) >= 2,
+      introduced with "Consequently" and established by an exact nonvanishing
+      witness at z1=(3+4i)/5, z2=(5+12i)/13. Authors note Prop 17 proves the
+      full three-parameter containment, so this is illustrative and
+      downstream-only. Logged as node U3 (MECH, outside the C26 cone).
+  (c) (S.2.60) defines a named object, A6,reg^fc, not previously in the DAG.
+
+SYSTEMATIC FINDING — the extractor recorded where results were STATED, not
+  where their proofs and definitional content LIVED. Only gaps that left a
+  full page unclaimed were detectable by page coverage; narrower off-by-ones
+  in the S-series would not show. V1 must check page references as a class,
+  not only statements.
+
+H6-H11 — dag_audit.py counted rows without validating column count.
+  A line-wrapped table row parsed as two fragments and both were silently
+  discarded. U2 was absent from the graph for the entire week, together with
+  its edges to P7(1) and C19. Every cone computation and bucket count
+  published before this commit was computed on 47 rows, not 48 — including
+  the committed verification/v0-structural.txt of 2026-08-25.
+  caught_by: manual sed inspection while inserting U3.
+  should_have_been_caught_by: a column-count assertion in the auditor.
+  Status: OPEN — assertion not yet added to dag_audit.py.
+
+REPAIR NOTE — during the U2 repair, U1 was deleted by an over-broad edit and
+  restored. The auditor's dangling-reference check caught it immediately
+  (P15 -> U1). Two independent checks covering different failure modes.
+
+AUDIT GAP UNCHANGED after all corrections: the same eleven nodes
+  (C26, D20, D23, P24, P25, S15, S16, S17, S18, S19, T22) sit in the C26
+  cone but outside the Lean-audited C19 chain. The deliverable survives the
+  U2 correction.e VERIFY.md.

@@ -42,7 +42,7 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | D20 | Def 20: product-regular lift (11 guards, Eq 63 / S.2.26) (p9; recalled p35) | Sec II B machinery (S.2.16–S.2.24) | DEF | — | |
 | T21 | Thm 21: product-regular lift physical ⟺ ω_n ≤ 0; two sheets for ω_n < 0 coalescing at 0; forced block unimodular (p10; proof p36) | S7, S8, S9, S11, Haagerup decomposition (import) | ARG | unverified | IMPORT edge: Haagerup–Szöllősi two-phase decomposition [23, pp296–322; 24]; outside Lean audit |
 | T22 | Thm 22: exact product-regular reach: ℋ₆ \ 𝒫₆ = 𝒯₆ ∪̇ {[H_×]} (p11; proof pp44–46) | P13, P7, S16, S17, S18, S19 | ARG | unverified | counting argument N_dep ≥ 100 (S.2.95) vs ≤ 80 (S.2.100). MECH cores: 12² = 144 pairings at zero endpoint, 24 S₆-orbits, exact rational elimination (20 force q = 9/5), 4×4 Gram positivity; six exact checkers in repo (Sec II J c). Outside Lean audit. Feeds C26 via P25 |
-| D23 | Def 23: G₆⁽⁴⁾ ≔ non-Karlsson, non-Tao classes returned by Steps 1–8 of Szöllősi's Construction 3.1, incl. Case 2 common-root branch, excl. identically-vanishing failure case (p12; recalled p48) | [24] | IMPORT | unverified | fidelity to Construction 3.1 / Thm 4.1 / Remarks 4.2–4.3 of [24] is the entire check; definition drift here would hollow out C26 |
+| D23 | Def 23: G₆⁽⁴⁾ ≔ non-Karlsson, non-Tao classes returned by Steps 1–8 of Szöllősi's Construction 3.1, incl. Case 2 common-root branch, excl. identically-vanishing failure case (p12; defnitional passage 41; recalled p48) | [24] | IMPORT | unverified | fidelity to Construction 3.1 / Thm 4.1 / Remarks 4.2–4.3 of [24] is the entire check; definition drift here would hollow out C26 |
 | P24 | Prop 24: at every product-regular corner, Construction 3.1 and the branch-complete procedure produce the same candidates and completions (p12; proof p48) | D20, D23 | ARG | unverified | reversibility-of-elimination argument, short |
 | P25 | Prop 25: G₆⁽⁴⁾ = 𝒜₆^fc \ (𝒦₆⁽³⁾ ∪ 𝒯₆) (p12; proof pp48–49) | S15, T22, P24 | ARG | unverified | forward = S15; reverse = T22 + P24 |
 | C26 | Cor 26: ℋ₆ = G₆⁽⁴⁾ ∪ 𝒦₆⁽³⁾ ∪ 𝒯₆, pairwise disjoint — Szöllősi's Conjecture 4.2 (journal; v1: 4.4) (p12; proof p49) | C19, P25 | ARG | unverified | disjointness via cross-ratio check (trivial-MECH: Tao cross ratios cubic, H₂ needs −1) |
@@ -56,7 +56,7 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | S3 | Prop S.3: direct finite completion: invertible-block completions = ℬ_E × 𝒞_E pairs with forced D = −CE†(B⁻¹)†; Hadamard ⟺ D entrywise unimodular (p27) | D9 | MECH | unverified | identity chain S.1.110–S.1.114; deliberately *reproves* Szöllősi's fixed-corner criterion — import avoided |
 | S4 | Lemma S.4: nonzero oriented leading coefficients of both fundamental sextics ⇒ side fiber finite; + invertible actual blocks ⇒ finite-corner witness (pp27–28) | D9, sextic definition (Eq 53 / S.2.18–S.2.20) | ARG | unverified | short finiteness logic. Uses Sec II B formalism inside Sec I — not circular (II B is definitional/identity-level, independent of T6), but the cross-reference is worth flagging |
 | S5 | Lemma S.5: exact fixed-Gram presentation: the six incidence equations ⟺ Gram form S.2.7; S₃-action only relabels (p32) | S.2.3 definitions | MECH | unverified | identity + trivial division-legitimacy glue |
-| S6 | Prop S.6: physical soundness and completeness at one corner: 𝒴_E reconstructions = completed-procedure outputs at E (p33) | S5, S3, D10 | ARG | unverified | assembly |
+| S6 | Prop S.6: physical soundness and completeness at one corner: 𝒴_E reconstructions = completed-procedure outputs at E (statement p33, proof p33-34) | S5, S3, D10 | ARG | unverified | assembly |
 | S7 | Lemma S.7: product-factor identities: Φ_fund = c₆ q_{s,u} q_{s,v}; u+v = −c₃/((1+ss^#)c₆), uv = c₀/c₆ (p35) | S.2.16–S.2.24 | MECH | unverified | exact polynomial expansion both directions |
 | S8 | Lemma S.8: complement positivity: regularity guards + ω_n(G) ≤ 0 ⇒ G = 6I₃ − EE† > 0 (pp35–36) | exact reduction S.2.28–S.2.31 | ARG | unverified | the ω_n(G) reduction and det G = 27 − 3p + J identities MECH-checkable; Zariski-density + continuity + Sylvester steps are ARG |
 | S9 | Lemma S.9: the product-regular guards cover every denominator used in reconstruction/matching/flatness (p36) | D20, S7 | ARG | unverified | |
@@ -73,11 +73,11 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | S20 | Lemma S.20: four-circulant-block matrices have a monomial automorphism with (3,3)-cycle row/column parts (p47) | — | ARG | unverified | short conjugation argument; used only by the numerical sidebar (Table I witnesses) |
 | U1 | (unnumbered, p24) every order-3 CHM ∼ F₃ | — | MECH | unverified | 1 + x + y = 0 on 𝕋 forces {1, ω, ω²} up to phase/permutation; used by P15 |
 | U2 | (unnumbered, p46) intrinsic Karlsson characterization: [H] ∈ 𝒦₆⁽³⁾ ⟺ −1 ∈ Λ(H); 𝒦₆⁽³⁾ ⊊ 𝒜₆^fc | P7(1), C19 | ARG | unverified | downstream only; nothing depends on it |
+| U3 | (unnumbered, p41) dim_ℝ(𝒦₆⁽³⁾ ∩ 𝒜₆,reg^fc) ≥ 2 via exact nonvanishing witness at z₁=(3+4i)/5, z₂=(5+12i)/13 | S.2.60–S.2.64 | MECH | unverified | authors note Prop 17 proves the full three-parameter containment — illustrative, downstream only |
 
 ## Load-bearing step
 
 > **Provisional — from DAG extraction only; no verification performed.**
-
 For the classification claim (T6 + C19): every route passes through the funnel
 P16 = {P13, P14, P15}, and both halves of P7 sit under it (P7(1) under P14/P16/P17,
 P7(2) under P15). The largest unaided argument is **P13, the infinite-fiber
