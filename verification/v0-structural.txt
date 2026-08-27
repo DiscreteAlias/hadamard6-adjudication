@@ -23,8 +23,3 @@ page coverage: 46/50 pages claimed by some node
 
 STRUCTURAL PASS
 NOT CHECKED: fidelity of any row to the paper. See VERIFY.md.
-
-V3 page-gap resolution (2026-08-26, manual):
-  p 34 — checked against PDF: <what's actually there>
-  p 41 — checked against PDF: <what's actually there>
-  Verdict: <citations imprecise but correct / no unmodeled content / U3 found>
