@@ -68,12 +68,13 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | S15 | Prop S.15: published output retained: G₆⁽⁴⁾ ⊆ 𝒜₆^fc \ (𝒦₆⁽³⁾ ∪ 𝒯₆) (p42) | D23, D11 | ARG | unverified | procedure-comparison argument |
 | S16 | Prop S.16: product-exceptional Karlsson class: 𝒦₆⁽³⁾ \ 𝒫₆ = {[H_×]} (p42) | P7(1), Karlsson parametrization (import), Matszangosz–Szöllősi (import), exact certificates | ARG | unverified | MECH core: H_× H_×† = 6I₆; 400-corner determinant-norm census (120,120,80,80); all 14,400 frames fail a resultant guard; repo checker `karlsson_product_exceptional_theorem_check.py`. Reverse: 49-case pair analysis + IMPORT [31] + exact divisor calculation |
 | S17 | Prop S.17: Tao is product exceptional: 𝒯₆ ∩ 𝒫₆ = ∅ (p43) | D5, D20 | MECH | unverified | exact all-frame enumeration in ℤ[ω]/(ω²+ω+1): 14,400 frames; 12,960 / 5,760 counts; repeated coordinate ⇒ cubic not simple |
-| S18 | Lemma S.18: two-sided badness dispatcher: both actual sides directionally bad ⇒ H₂-reducible or order-3 Hadamard block (pp43–44) | P7(1), P15 | ARG | unverified | complete case split; exact certificate leaves S.2.72–S.2.81 (Cayley substitution, discriminants) MECH-checkable |
+| S18 | Lemma S.18: two-sided badness dispatcher: both actual sides directionally bad ⇒ H₂-reducible or order-3 Hadamard block (pp43–44) | P7(1), P15, U4 | ARG | unverified | complete case split; exact certificate leaves S.2.72–S.2.81 (Cayley substitution, discriminants) MECH-checkable |
 | S19 | Cor S.19: surviving block-polarized normal form E_M(a,b); 2θ = q(3−q) > 0 (p44) | S18 | ARG | unverified | substitution identities S.2.84–S.2.85 MECH-checkable |
 | S20 | Lemma S.20: four-circulant-block matrices have a monomial automorphism with (3,3)-cycle row/column parts (p47) | — | ARG | unverified | short conjugation argument; used only by the numerical sidebar (Table I witnesses) |
 | U1 | (unnumbered, p24) every order-3 CHM ∼ F₃ | — | MECH | unverified | 1 + x + y = 0 on 𝕋 forces {1, ω, ω²} up to phase/permutation; used by P15 |
 | U2 | (unnumbered, p46) intrinsic Karlsson characterization: [H] ∈ 𝒦₆⁽³⁾ ⟺ −1 ∈ Λ(H); 𝒦₆⁽³⁾ ⊊ 𝒜₆^fc | P7(1), C19 | ARG | unverified | downstream only; nothing depends on it |
 | U3 | (unnumbered, p41) dim_ℝ(𝒦₆⁽³⁾ ∩ 𝒜₆,reg^fc) ≥ 2 via exact nonvanishing witness at z₁=(3+4i)/5, z₂=(5+12i)/13 | S.2.60–S.2.64 | MECH | unverified | authors note Prop 17 proves the full three-parameter containment — illustrative, downstream only |
+| U4 | (unnumbered, p43) directional-badness characterization: at a finite corner a product-regular frame exists exactly when the actual horizontal side is row-good and the actual vertical side is column-good; defines γ_ij, Good_r, Good_c, "directionally bad" | D20, D10 | ARG | unverified | four-sentence justification for an iff; S18's statement is phrased entirely in these terms and has no meaning without it. Unnumbered, and outside the Lean audit along with S18 |
 
 ## Load-bearing step
 
@@ -85,28 +86,37 @@ trichotomy (pp17–23)** — seven pages of branch analysis whose risk is
 case-exhaustiveness, not any single identity.
 
 The paper ships a companion Lean 4 audit claimed (p31) to mechanize the entire
-T6/C19 chain with exactly P7's two published inputs as explicit hypotheses. If
-that artifact checks out (exists, compiles, no sorry/admit, axioms as claimed,
-statements faithful to the paper's), the classification's residual trust
-collapses to: **P7 citation fidelity + Lean statement fidelity**.
-
+T6/C19 chain. Note (V1-8): p31 states the public theorem keeps two arguments
+visible — the cubic-root criterion, and the *concrete raw-or-seam form* of
+Karlsson's parametrization ("every H₂-reducible Hadamard has either a canonical
+Karlsson-coordinate presentation or an affine-Fourier seam presentation"). The
+paper asserts these "are precisely the two published inputs of Proposition 7";
+that is the paper's claim, not a reader-verifiable one. The second hypothesis is
+weaker than P7(1) in direction (forward only, not the iff) and different in form
+(a two-case concrete normal form, not family membership). So if the artifact
+checks out (exists, compiles, no sorry/admit, axioms as claimed), the
+classification's residual trust collapses to **three** checks, not two:
+**P7(2) citation fidelity + the raw-or-seam form's fidelity to [26,27] +
+Lean statement fidelity to C19**. The third is a Lean question; the second is a
+citation-fidelity question about Karlsson.
 The headline claim as usually quoted (C26, Szöllősi's conjecture / "the three
 sectors exhaust ℋ₆") additionally rests on **D23's fidelity to Szöllősi's
-Construction 3.1** and on **T22 ← {S16, S17, S18}**, including the
-N_dep ≥ 100 vs ≤ 80 counting argument — all **outside** the Lean audit
-(repo Python certificates only).
+Construction 3.1**, on **T22 ← {S16, S17, S18}** including the N_dep ≥ 100
+vs ≤ 80 counting argument, and on **U4** (p43, unnumbered) — the
+directional-badness iff that S18's statement is phrased entirely in terms of —
+all **outside** the Lean audit(repo Python certificates only).
 
 ## Bucket counts
-Recorded on day one; revised 2026-08-26 per v1-9 (was 48 rows = 40 claim nodes, MECH 11, ARG = 68 %). 48 rows = 40 claim nodes + 8 DEF
+Recorded on day one; revised 2026-08-26 per V1-9 and V1-2 (day-one figures: 48 rows = 40 claim nodes, MECH 11, ARG 27, ARG ≈ 68 %). Current: 50 rows = 42 claim nodes + 8 DEF
+rows (D1, D2, D4, D9, D10, D11, D20, S2; excluded from counts).
 - MECH: **12** — D3, D5, P18, S1, S3, S5, S7, S10, S13, S17, U1, U3
 - IMPORT: **2** — P7, D23 (import *edges* additionally enter P17, T21, T22-via-S16, S11, S16)
-- ARG: **27** — T6, L8, P12, P13, P14, P15, P16, P17, C19, T21, T22, P24, P25, C26, S4, S6, S8, S9, S11, S12, S14, S15, S16, S18, S19, S20, U2
-
-ARG ≈ 66 % of claim nodes. Per README pre-commitment: this does not renegotiate
+- ARG: **28** — T6, L8, P12, P13, P14, P15, P16, P17, C19, T21, T22, P24, P25, C26, S4, S6, S8, S9, S11, S12, S14, S15, S16, S18, S19, S20, U2, U4
+ARG ≈ 67 % of claim nodes. Per README pre-commitment: this does not renegotiate
 the deliverable — the DAG plus a localization is the full deliverable. Note the
 asymmetry: many ARG nodes are thin assembly shells (T6, P12, P16, C19, S6, S14)
 whose substance is MECH-checkable identity work; the *genuinely* argumentative
-mass is concentrated in P13, S8, S11, S18, and the T22 counting argument.
+mass is concentrated in P13, S8, S11, S18, U4, and the T22 counting argument.
 
 ## External imports to verify
 | cited as | source | used by | says what is attributed? | checked |
