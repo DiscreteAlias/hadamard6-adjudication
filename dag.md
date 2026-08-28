@@ -39,9 +39,9 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | P17 | Prop 17: every class in 𝒦₆⁽³⁾ has a finite-corner witness; 𝒦₆⁽³⁾ ⊂ 𝒜₆^fc (p8; proof pp28–30) | P7(1), S4, Karlsson parametrization (import), exact certificates | ARG | unverified | IMPORT edge: Karlsson chart + Möbius relations S.1.117–S.1.128 [26,27]. MECH core: 245 pairwise resultants → 25 first-phase conditions → 18 branches (S.1.119); Bernstein 10-box dyadic positivity for R (p30, Sec II J b). Kernel-checked per p49 in repo Lean modules (KarlssonResidualCertificate / KarlssonWitnessResultants / FourierSeamCertificate) |
 | P18 | Prop 18: leading corner of S₆⁽⁰⁾ is a finite-corner witness; 𝒯₆ ⊂ 𝒜₆^fc (p8; proof p30) | P13, D5 | MECH | unverified | exact ℤ[ω] arithmetic given P13: det E = 3ω, (BB†)₁₂ = ω−1 ≠ 0, (BB†)₂₃ = 0, cross ratios cubic ⇒ no 2×2 submatrix |
 | C19 | Cor 19: 𝒜₆^fc = ℋ₆ — the procedure is sound and exhaustive (p8; proof p31) | T6, P12, S3 | ARG | unverified | assembly; inside Lean-audit scope; this + C26 is the claim being adjudicated |
-| D20 | Def 20: product-regular lift (11 guards, Eq 63 / S.2.26) (p9; recalled p35) | Sec II B machinery (S.2.16–S.2.24) | DEF | — | |
+| D20 | Def 20: product-regular lift (11 guards, canonical form Eq. S.2.67 p42; Eq 63 / S.2.26 p35) (p9; recalled p35, p42) | Sec II B machinery (S.2.16–S.2.24) | DEF | — | eleven guards: det E, det B(det B)#, det C(det C)#, c₆h, c₆v, δh, δv, Disc qh, Disc qv, Rh, Rv |
 | T21 | Thm 21: product-regular lift physical ⟺ ω_n ≤ 0; two sheets for ω_n < 0 coalescing at 0; forced block unimodular (p10; proof p36) | S7, S8, S9, S11, Haagerup decomposition (import) | ARG | unverified | IMPORT edge: Haagerup–Szöllősi two-phase decomposition [23, pp296–322; 24]; outside Lean audit |
-| T22 | Thm 22: exact product-regular reach: ℋ₆ \ 𝒫₆ = 𝒯₆ ∪̇ {[H_×]} (p11; proof pp44–46) | P13, P7, S16, S17, S18, S19 | ARG | unverified | counting argument N_dep ≥ 100 (S.2.95) vs ≤ 80 (S.2.100). MECH cores: 12² = 144 pairings at zero endpoint, 24 S₆-orbits, exact rational elimination (20 force q = 9/5), 4×4 Gram positivity; six exact checkers in repo (Sec II J c). Outside Lean audit. Feeds C26 via P25 |
+| T22 | Thm 22: exact product-regular reach: ℋ₆ \ 𝒫₆ = 𝒯₆ ∪̇ {[H_×]} (p11; proof pp44–46) | P13, P7, S16, S17, S18, S19, U5 | ARG | unverified | counting argument N_dep ≥ 100 (S.2.95) vs ≤ 80 (S.2.100). MECH cores: 12² = 144 pairings at zero endpoint, 24 S₆-orbits, exact rational elimination (20 force q = 9/5), 4×4 Gram positivity; six exact checkers in repo (Sec II J c). Outside Lean audit. Feeds C26 via P25 |
 | D23 | Def 23: G₆⁽⁴⁾ ≔ non-Karlsson, non-Tao classes returned by Steps 1–8 of Szöllősi's Construction 3.1, incl. Case 2 common-root branch, excl. identically-vanishing failure case (p12; defnitional passage 41; recalled p48) | [24] | IMPORT | unverified | fidelity to Construction 3.1 / Thm 4.1 / Remarks 4.2–4.3 of [24] is the entire check; definition drift here would hollow out C26 |
 | P24 | Prop 24: at every product-regular corner, Construction 3.1 and the branch-complete procedure produce the same candidates and completions (p12; proof p48) | D20, D23 | ARG | unverified | reversibility-of-elimination argument, short |
 | P25 | Prop 25: G₆⁽⁴⁾ = 𝒜₆^fc \ (𝒦₆⁽³⁾ ∪ 𝒯₆) (p12; proof pp48–49) | S15, T22, P24 | ARG | unverified | forward = S15; reverse = T22 + P24 |
@@ -66,8 +66,8 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | S13 | Lemma S.13: cross-ratio pivot normalization 𝒟 invariant under diagonal scalings (p40) | — | MECH | unverified | trivial |
 | S14 | Thm S.14: global physical incidence cover: 𝒜₆^fc = union over 400 (I,J) of tagged presentations; transitions Laurent-rational (p40) | S6, T6, S13 | ARG | unverified | assembly |
 | S15 | Prop S.15: published output retained: G₆⁽⁴⁾ ⊆ 𝒜₆^fc \ (𝒦₆⁽³⁾ ∪ 𝒯₆) (p42) | D23, D11 | ARG | unverified | procedure-comparison argument |
-| S16 | Prop S.16: product-exceptional Karlsson class: 𝒦₆⁽³⁾ \ 𝒫₆ = {[H_×]} (p42) | P7(1), Karlsson parametrization (import), Matszangosz–Szöllősi (import), exact certificates | ARG | unverified | MECH core: H_× H_×† = 6I₆; 400-corner determinant-norm census (120,120,80,80); all 14,400 frames fail a resultant guard; repo checker `karlsson_product_exceptional_theorem_check.py`. Reverse: 49-case pair analysis + IMPORT [31] + exact divisor calculation |
-| S17 | Prop S.17: Tao is product exceptional: 𝒯₆ ∩ 𝒫₆ = ∅ (p43) | D5, D20 | MECH | unverified | exact all-frame enumeration in ℤ[ω]/(ω²+ω+1): 14,400 frames; 12,960 / 5,760 counts; repeated coordinate ⇒ cubic not simple |
+| S16 | Prop S.16: product-exceptional Karlsson class: 𝒦₆⁽³⁾ \ 𝒫₆ = {[H_×]} (p42) | P7(1), Karlsson parametrization (import), Matszangosz–Szöllősi (import), exact certificates, U5 | ARG | unverified | MECH core: H_× H_×† = 6I₆; 400-corner determinant-norm census (120,120,80,80); all 14,400 frames fail a resultant guard; repo checker `karlsson_product_exceptional_theorem_check.py`. Reverse: 49-case pair analysis + IMPORT [31] + exact divisor calculation |
+| S17 | Prop S.17: Tao is product exceptional: 𝒯₆ ∩ 𝒫₆ = ∅ (p43) | D5, D20, U5| MECH | unverified | exact all-frame enumeration in ℤ[ω]/(ω²+ω+1): 14,400 frames; 12,960 / 5,760 counts; repeated coordinate ⇒ cubic not simple |
 | S18 | Lemma S.18: two-sided badness dispatcher: both actual sides directionally bad ⇒ H₂-reducible or order-3 Hadamard block (pp43–44) | P7(1), P15, U4 | ARG | unverified | complete case split; exact certificate leaves S.2.72–S.2.81 (Cayley substitution, discriminants) MECH-checkable |
 | S19 | Cor S.19: surviving block-polarized normal form E_M(a,b); 2θ = q(3−q) > 0 (p44) | S18 | ARG | unverified | substitution identities S.2.84–S.2.85 MECH-checkable |
 | S20 | Lemma S.20: four-circulant-block matrices have a monomial automorphism with (3,3)-cycle row/column parts (p47) | — | ARG | unverified | short conjugation argument; used only by the numerical sidebar (Table I witnesses) |
@@ -75,6 +75,7 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | U2 | (unnumbered, p46) intrinsic Karlsson characterization: [H] ∈ 𝒦₆⁽³⁾ ⟺ −1 ∈ Λ(H); 𝒦₆⁽³⁾ ⊊ 𝒜₆^fc | P7(1), C19 | ARG | unverified | downstream only; nothing depends on it |
 | U3 | (unnumbered, p41) dim_ℝ(𝒦₆⁽³⁾ ∩ 𝒜₆,reg^fc) ≥ 2 via exact nonvanishing witness at z₁=(3+4i)/5, z₂=(5+12i)/13 | S.2.60–S.2.64 | MECH | unverified | authors note Prop 17 proves the full three-parameter containment — illustrative, downstream only |
 | U4 | (unnumbered, p43) directional-badness characterization: at a finite corner a product-regular frame exists exactly when the actual horizontal side is row-good and the actual vertical side is column-good; defines γ_ij, Good_r, Good_c, "directionally bad" | D20, D10 | ARG | unverified | four-sentence justification for an iff; S18's statement is phrased entirely in these terms and has no meaning without it. Unnumbered, and outside the Lean audit along with S18 |
+| U5 | (unnumbered, p42) equivalence-invariance of product-regularity: row/column permutations act bijectively on the 400 corners and 14,400 frames, so existence of a product-regular frame is invariant under standard equivalence — licensing the class-level definition 𝒫₆ (S.2.68) | — | ARG | unverified | one-sentence justification; well-definedness of 𝒫₆, which S16, S17 and T22 all quantify over |
 
 ## Load-bearing step
 
@@ -107,11 +108,11 @@ directional-badness iff that S18's statement is phrased entirely in terms of —
 all **outside** the Lean audit(repo Python certificates only).
 
 ## Bucket counts
-Recorded on day one; revised 2026-08-26 per V1-9 and V1-2 (day-one figures: 48 rows = 40 claim nodes, MECH 11, ARG 27, ARG ≈ 68 %). Current: 50 rows = 42 claim nodes + 8 DEF
+Recorded on day one; revised 2026-08-26 per V1-9, V1-2, V1-13 (day-one figures: 48 rows = 40 claim nodes, MECH 11, ARG 27, ARG ≈ 68 %). Current: 51 rows = 43 claim nodes + 8 DEF
 rows (D1, D2, D4, D9, D10, D11, D20, S2; excluded from counts).
 - MECH: **12** — D3, D5, P18, S1, S3, S5, S7, S10, S13, S17, U1, U3
 - IMPORT: **2** — P7, D23 (import *edges* additionally enter P17, T21, T22-via-S16, S11, S16)
-- ARG: **28** — T6, L8, P12, P13, P14, P15, P16, P17, C19, T21, T22, P24, P25, C26, S4, S6, S8, S9, S11, S12, S14, S15, S16, S18, S19, S20, U2, U4
+- ARG: **29** — T6, L8, P12, P13, P14, P15, P16, P17, C19, T21, T22, P24, P25, C26, S4, S6, S8, S9, S11, S12, S14, S15, S16, S18, S19, S20, U2, U4, U5
 ARG ≈ 67 % of claim nodes. Per README pre-commitment: this does not renegotiate
 the deliverable — the DAG plus a localization is the full deliverable. Note the
 asymmetry: many ARG nodes are thin assembly shells (T6, P12, P16, C19, S6, S14)
