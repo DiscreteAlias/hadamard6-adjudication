@@ -32,7 +32,7 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | D10 | Def 10: finite-dilation corner: ℬ_E^× and 𝒞_E^× nonempty and finite (pp4–5) | D9 | DEF | — | |
 | D11 | Def 11: total finite-corner atlas 𝒜₆^fc = classes of all retained outputs over all seeds (p6) | D10, branch-complete procedure (Sec III C, Eqs 17–19) | DEF | — | the five-step procedure is definitional; division-free claim is a property argued at P24/S3 |
 | P12 | Prop 12: every matrix retained by the procedure is CHM (p6; proof p27) | S3, D11 | ARG | unverified | one-paragraph glue; all substance in S3 (MECH) |
-| P13 | Prop 13: infinite-fiber trichotomy: invertible X ∈ 𝕋^{3×3} with infinite normalized row-Gram fiber ⇒ XX† = 3I₃ ∨ Re τ_r(X) < 0 ∨ X has 2×2 Hadamard submatrix (p7; proof pp17–23) | S1, S2 | ARG | unverified | **largest unaided argument in the paper** (~7 pp: dependent branch; nondependent s=0, 0<s<1, 1≤s≤3 common-root repair). Embedded polynomial identities (S.1.20, S.1.26–S.1.31, S.1.37–S.1.45, S.1.58–S.1.69, S.1.75–S.1.80) MECH-checkable; branch-exhaustiveness is the risk |
+| P13 | Prop 13: infinite-fiber trichotomy: invertible X ∈ 𝕋^{3×3} with infinite normalized row-Gram fiber ⇒ XX† = 3I₃ ∨ Re τ_r(X) < 0 ∨ X has 2×2 Hadamard submatrix (p7; proof pp17–23) | S2 | ARG | unverified | **largest unaided argument in the paper** (~7 pp: dependent branch; nondependent s=0, 0<s<1, 1≤s≤3 common-root repair). Embedded polynomial identities (S.1.20, S.1.26–S.1.31, S.1.37–S.1.45, S.1.58–S.1.69, S.1.75–S.1.80) MECH-checkable; branch-exhaustiveness is the risk |
 | P14 | Prop 14: [H] ∉ 𝒦₆⁽³⁾ ⇒ all four blocks order-3 Hadamard, or some permutation+dephasing produces a finite-corner witness (p7; proof pp23–24) | P13, S1, L8, P7(1) | ARG | unverified | three-minus-sign identities S.1.86–S.1.88 MECH-checkable |
 | P15 | Prop 15: one order-3 Hadamard block ⇒ H ∼ S₆⁽⁰⁾ or [H] ∈ 𝒦₆⁽³⁾ (p7; proof pp24–26) | U1, P7(2), D4 | ARG | unverified | Fourier-autocorrelation algebra S.1.91–S.1.108 MECH-checkable |
 | P16 | Prop 16: no finite-corner witness ⇒ [H] ∈ 𝒦₆⁽³⁾ ∪ 𝒯₆ (p8; proof p26) | P13, P14, P15, L8, P7(1) | ARG | unverified | assembly; the routing funnel of the whole classification |
@@ -56,8 +56,8 @@ unnumbered load-bearing claims (U1, U2). Page references are to the PDF.
 | S3 | Prop S.3: direct finite completion: invertible-block completions = ℬ_E × 𝒞_E pairs with forced D = −CE†(B⁻¹)†; Hadamard ⟺ D entrywise unimodular (p27) | D9 | MECH | unverified | identity chain S.1.110–S.1.114; deliberately *reproves* Szöllősi's fixed-corner criterion — import avoided |
 | S4 | Lemma S.4: nonzero oriented leading coefficients of both fundamental sextics ⇒ side fiber finite; + invertible actual blocks ⇒ finite-corner witness (pp27–28) | D9, sextic definition (Eq 53 / S.2.18–S.2.20) | ARG | unverified | short finiteness logic. Uses Sec II B formalism inside Sec I — not circular (II B is definitional/identity-level, independent of T6), but the cross-reference is worth flagging |
 | S5 | Lemma S.5: exact fixed-Gram presentation: the six incidence equations ⟺ Gram form S.2.7; S₃-action only relabels (p32) | S.2.3 definitions | MECH | unverified | identity + trivial division-legitimacy glue |
-| S6 | Prop S.6: physical soundness and completeness at one corner: 𝒴_E reconstructions = completed-procedure outputs at E (statement p33, proof p33-34) | S5, S3, D10 | ARG | unverified | assembly |
-| S7 | Lemma S.7: product-factor identities: Φ_fund = c₆ q_{s,u} q_{s,v}; u+v = −c₃/((1+ss^#)c₆), uv = c₀/c₆ (p35) | S.2.16–S.2.24 | MECH | unverified | exact polynomial expansion both directions |
+| S6 | Prop S.6: physical soundness and completeness at one corner: 𝒴_E reconstructions = completed-procedure outputs at E (statement p33, proof) | S5, S3, D10 | ARG | unverified | assembly |
+| S7 | Lemma S.7: product-factor identities: Φ_fund = c₆ q_{s,u} q_{s,v}; u+v = −c₃/((1+ss^#)c₆), uv = c₀/c₆ (statement and proof p35; defining machinery S.2.16-S.2.24 p34) | S.2.16–S.2.24 | MECH | unverified | exact polynomial expansion both directions |
 | S8 | Lemma S.8: complement positivity: regularity guards + ω_n(G) ≤ 0 ⇒ G = 6I₃ − EE† > 0 (pp35–36) | exact reduction S.2.28–S.2.31 | ARG | unverified | the ω_n(G) reduction and det G = 27 − 3p + J identities MECH-checkable; Zariski-density + continuity + Sylvester steps are ARG |
 | S9 | Lemma S.9: the product-regular guards cover every denominator used in reconstruction/matching/flatness (p36) | D20, S7 | ARG | unverified | |
 | S10 | Prop S.10: generic cover nonsplit: discriminant of S.2.24 not a square in ℚ(a,b,c,d) (p37) | S.2.24 | MECH | unverified | exact specialization (b,c,d) = (2,3,5); degree-8 integer P(a); gcd(P,P′) = 1 scriptable; one-line unique-factorization glue |
@@ -97,22 +97,18 @@ N_dep ≥ 100 vs ≤ 80 counting argument — all **outside** the Lean audit
 (repo Python certificates only).
 
 ## Bucket counts
-
-Recorded on day one, do not revise silently. 48 rows = 40 claim nodes + 8 DEF
-rows (D1, D2, D4, D9, D10, D11, D20, S2; excluded from counts).
-
-- MECH: **11** — D3, D5, P18, S1, S3, S5, S7, S10, S13, S17, U1
+Recorded on day one; revised 2026-08-26 per v1-9 (was 48 rows = 40 claim nodes, MECH 11, ARG = 68 %). 48 rows = 40 claim nodes + 8 DEF
+- MECH: **12** — D3, D5, P18, S1, S3, S5, S7, S10, S13, S17, U1, U3
 - IMPORT: **2** — P7, D23 (import *edges* additionally enter P17, T21, T22-via-S16, S11, S16)
 - ARG: **27** — T6, L8, P12, P13, P14, P15, P16, P17, C19, T21, T22, P24, P25, C26, S4, S6, S8, S9, S11, S12, S14, S15, S16, S18, S19, S20, U2
 
-ARG ≈ 68 % of claim nodes. Per README pre-commitment: this does not renegotiate
+ARG ≈ 66 % of claim nodes. Per README pre-commitment: this does not renegotiate
 the deliverable — the DAG plus a localization is the full deliverable. Note the
 asymmetry: many ARG nodes are thin assembly shells (T6, P12, P16, C19, S6, S14)
 whose substance is MECH-checkable identity work; the *genuinely* argumentative
 mass is concentrated in P13, S8, S11, S18, and the T22 counting argument.
 
 ## External imports to verify
-
 | cited as | source | used by | says what is attributed? | checked |
 |---|---|---|---|---|
 | Karlsson complete 3-param family = H₂-reducible classification (P7(1)) | [26] LAA 434:239 (2011); [27] LAA 434:247 (2011); cross-cited [24] Thm 2.11 (journal) / Thm 2.12 (arXiv v1) | P7(1) → P14, P16, P17, S12, S16, S18, U2 | | ☐ |
