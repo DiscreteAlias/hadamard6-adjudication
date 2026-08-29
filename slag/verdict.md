@@ -244,10 +244,45 @@ python3 checks/dag_audit.py dag.md --pages 50 --target C26 --audited C19
 ```
 
 ---
+## Disclosure and response
 
-## Disclosure
+**Sent 2026-08-29, 04:49 UTC.** The five findings in "Five dependencies the
+numbering does not expose", the p31 wording note, and a smaller section-range
+slip were sent to the corresponding author ahead of any public write-up. No
+claims about correctness were made.
 
-2026-08-29: the five findings in "Five dependencies the numbering does not
-expose", plus the p31 wording note and the Sections I B–I G range slip, sent to
-the corresponding author ahead of any public write-up. No claims about
-correctness were made. Response, if any, to be recorded here.
+**Response 2026-08-29, 13:23 UTC**, from Cárdenes Wuttig, with Tindall copied.
+All findings accepted; none was a misreading. The outcome splits, and the split
+matters:
+
+**Already addressed before the note was sent — not attributable to this work.**
+The reply states that revisions to the paper and repository were already made
+and would appear the following Monday, and attaches a revised manuscript dated
+**28 August** — the day *before* the note. In that revision: the unnumbered
+Karlsson-intersection claim (U3) is removed; Definition 20 gives the full guard
+list directly; Definition 23 explicitly defines G₆⁽⁴⁾ and distinguishes it from
+the authors' own completed output; and the Section I A omission is gone with a
+reorganisation. Three of the five findings, plus the section-range slip,
+converged independently.
+
+**Changed as a result of the note.** Two findings remained open in the revision,
+and the authors state they will promote both to numbered statements:
+
+- **U4** — the p43 admissibility/directional-badness characterisation. The reply
+  notes the discussion is now supported by a numbered lemma, but that the
+  definition and its equivalence with the existence of a product-regular frame
+  remain unnumbered.
+- **U5** — the p42 invariance of product-regular-frame existence under standard
+  equivalence, still stated only in prose.
+
+**Editorial note accepted.** On the p31 Lean scope wording, the reply agrees the
+remaining wording should refer to the concrete structural reductions derived
+within Lean, rather than saying that Lean proves the two published results
+themselves.
+
+**Scope of this verdict is unchanged.** Everything sealed above is computed
+against **v1** (arXiv stamp 18 Aug 2026). A revised manuscript exists
+(`hadamard_classification_Aug_28.pdf`, received 29 Aug) and a revised repository
+was announced. Node numbering, the dependency cone, and the fourteen-node audit
+gap all refer to v1 and are **not** amended here. A revision is a new
+adjudication, not a patch to a closed one.
