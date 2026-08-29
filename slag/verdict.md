@@ -242,3 +242,12 @@ Reproduce:
 python3 checks/lib/hadamard.py
 python3 checks/dag_audit.py dag.md --pages 50 --target C26 --audited C19
 ```
+
+---
+
+## Disclosure
+
+2026-08-29: the five findings in "Five dependencies the numbering does not
+expose", plus the p31 wording note and the Sections I B–I G range slip, sent to
+mateo.cardeneswuttig@yale.edu ahead of any public write-up. No claims about
+correctness were made. Response, if any, to be recorded here.
