@@ -26,21 +26,54 @@ TOKEN = re.compile(r"\b(?:[DPTLCSU]\d{1,2})\b")
 PAGES = re.compile(r"pp?\s*(\d{1,3})\s*(?:[–\-]\s*(\d{1,3}))?")
 
 
+# A line that opens like a claim row: "| <node-id> |". Anything matching this
+# MUST parse as a full six-column row.
+ROW_OPENER = re.compile(r"^\|\s*(?P<id>[A-Z]\d{1,2}|U\d+)\s*\|")
+
+
 def parse(path):
-    rows = []
-    for line in open(path, encoding="utf-8"):
-        m = ROW.match(line.rstrip("\n"))
+    """
+    Parse claim rows, and fail loudly on anything that opens like one but isn't.
+
+    H6-H11: the original dropped any line that didn't match ROW cleanly, and any
+    row whose column count wasn't six. A line-wrapped row fails BOTH -- its first
+    fragment has no trailing pipe so ROW never matches, and its tail starts with
+    a non-id cell so it is ignored. The node vanished from the graph with no
+    diagnostic. U2 was absent for a week that way, along with its edges.
+
+    The fix keys on ROW_OPENER instead: if a line starts "| <node-id> |" it is a
+    claim row and must yield six columns, or it is a structural failure. Lines
+    whose first cell is not a node id belong to other tables (the imports table
+    is five columns by design) and are ignored as before.
+    """
+    rows, malformed = [], []
+    for lineno, line in enumerate(open(path, encoding="utf-8"), 1):
+        line = line.rstrip("\n")
+        opener = ROW_OPENER.match(line)
+        m = ROW.match(line)
+
+        if not opener:
+            if not m:
+                continue
+            cells = [c.strip() for c in m.group("cells").split("|")]
+            if not cells or cells[0] in ("id",) or set(cells[0]) <= set("-:"):
+                continue
+            if not NODE.match(cells[0]):
+                continue  # another table's row; not ours to police
+
+        nid = opener.group("id") if opener else "?"
+
         if not m:
+            malformed.append((lineno, nid, "no trailing pipe -- line-wrapped row"))
             continue
+
         cells = [c.strip() for c in m.group("cells").split("|")]
         if len(cells) != 6:
+            malformed.append((lineno, nid, f"{len(cells)} columns, expected 6"))
             continue
-        if cells[0] in ("id",) or set(cells[0]) <= set("-:"):
-            continue
-        if not NODE.match(cells[0]):
-            continue
+
         rows.append(dict(zip(("id", "stmt", "deps", "bucket", "status", "notes"), cells)))
-    return rows
+    return rows, malformed
 
 
 def build(rows):
@@ -143,7 +176,7 @@ def main():
     ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
 
-    rows = parse(a.dag)
+    rows, malformed = parse(a.dag)
     ids, idset, edges, dangling = build(rows)
     bucket = {r["id"]: r["bucket"] for r in rows}
     bad = []
@@ -153,6 +186,11 @@ def main():
     ctr = counters(ids)
     covered, page_gaps = page_coverage(rows, a.pages)
 
+    for ln, nid, why in malformed:
+        bad.append(
+            f"malformed claim row, line {ln} (id {nid}): {why} "
+            f"-- this node is NOT in the graph (H6-H11)"
+        )
     if dupes:
         bad.append(f"duplicate ids: {dupes}")
     if dangling:
@@ -181,6 +219,7 @@ def main():
     rec = {
         "dag": a.dag,
         "rows": len(rows),
+        "malformed_rows": malformed,
         "buckets": dict(Counter(bucket.values())),
         "counters": ctr,
         "cycles": cycles,
@@ -201,7 +240,7 @@ def main():
         return 0 if not bad else 1
 
     print(f"# DAG audit — {a.dag}\n")
-    print(f"rows: {len(rows)}   buckets: {dict(Counter(bucket.values()))}")
+    print(f"rows: {len(rows)}   malformed: {len(malformed)}   buckets: {dict(Counter(bucket.values()))}")
     for name, c in ctr.items():
         state = "dense, no gaps" if not c["gaps"] else f"GAPS {c['gaps']}"
         print(f"counter[{name}]: {c['range'][0]}..{c['range'][1]} — {state}")

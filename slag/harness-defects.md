@@ -121,11 +121,11 @@ sound path (`counterexample/lib/numfield.py::fast_defect`).
 **should_have_been_caught_by:** the lib self-test — its anchors (F6, S6) live
 in Q(ζ6), where `simplify` is reliable; no anchor exercises a radical field.
 
-**Status:** OPEN in `checks/lib/hadamard.py`; no shared-lib behavior change
-while tracks are running. **Protocol (user-set):** both paths run on catalogue
-anchors and must agree there; on any disagreement elsewhere, **DomainMatrix
-wins and the event is loud** (logged as a problem, never silently resolved) —
-the lib is never used as a tiebreak against the field-arithmetic path.
+**Status:** FIXED in `checks/lib/hadamard.py` (commit a2e38a7). `defect()` now
+runs a sound DomainMatrix path over an explicit algebraic field alongside the
+heuristic; sound wins whenever it decides, disagreement prints loudly to stderr,
+and field-construction failure degrades to the falsy UNDECIDED singleton rather
+than to a number. Both paths' ranks are self-test anchors (F6 21, S6 25).
 
 ---
 
@@ -157,11 +157,10 @@ destroyed").
 the field path, and the disagreement was loud by protocol (H6-H4).
 **should_have_been_caught_by:** lib self-test — no anchor leaves Q(ζ6).
 
-**Status:** OPEN in `checks/lib/hadamard.py`; no shared-lib change while
-tracks run. Track B protocol: `is_hadamard` disagreements escalate to
-per-residual minimal-polynomial certification; the field/minpoly verdict wins;
-every occurrence is logged. Track A should treat lib `is_hadamard == False` on
-radical-entry matrices as UNDECIDED, not as a refutation.
+**Status:** FIXED in `checks/lib/hadamard.py` (commit a2e38a7). `is_hadamard()`
+is now three-valued; UNDECIDED never collapses to False. B6(2pi/3) — the witness
+— certifies TRUE and is a self-test anchor. `checks/README.md` records that an
+UNDECIDED verdict is exit 2 (reclassify the node ARG), never exit 1 (refuted).
 
 ---
 
@@ -329,3 +328,83 @@ violation — these are writes, not reads, so Track B's decorrelation claim
 **Status:** OPEN. Disposition pending triage. Do not move, delete, or
 import these four files — a background G6 defect elimination may still
 hold `g6_state.json` open. Logged only; not acted on by the H6-H4/H6-H5 fix.
+
+---
+
+## H6-H10 — `_real_field_for`'s escalation guard is nondeterministic by construction
+
+**Found:** 2026-08-26, during implementation of the H6-H4/H6-H5 fix.
+
+**What:** The ported field-construction helper originally escalated on a
+degree-budget estimate computed before calling `sp.QQ.algebraic_field`. That was
+the planned fix and it was wrong in both directions: measured directly, the
+estimate is unreliable — B6(2pi/3)'s twelve generators produce a naive
+product-of-degrees estimate of 65536 while the actual field has degree 4 and
+builds in under a second. Estimate-based rejection would have escalated the
+exact witness the commit exists to certify. The guard is therefore a **20-second
+wall-clock timeout around the actual construction**, confirmed against both
+B6(2pi/3) (0.5s, succeeds) and an adversarial case of 20 independent quadratic
+surds (correctly escalates at the 20s mark instead of hanging).
+
+**Not a defect — a recorded tradeoff.** This is logged because it changes the
+character of the guarantee, and the change is easy to miss. A degree budget is
+deterministic: same input, same verdict, forever. A wall-clock timeout is not.
+The same matrix can certify TRUE on an idle machine and escalate to UNDECIDED
+under load, on slower hardware, or after a sympy upgrade.
+
+**Blast radius.** The failure direction is safe — nothing unsound gets through,
+since the degraded verdict is UNDECIDED rather than TRUE or FALSE. But
+"exact arithmetic, reproducible verdicts" now carries an asterisk, and Track B's
+discipline was built on not having asterisks. **An UNDECIDED originating in this
+path means "too slow here, now" — not "not decidable."** Anyone reading a future
+UNDECIDED without that context will misread it as a mathematical fact about the
+matrix. `checks/README.md` should carry the same distinction alongside its exit-2
+contract: a MECH node reclassified ARG on a timeout is not the same thing as one
+reclassified on genuine undecidability.
+
+**caught_by:** the implementing session, by measuring the estimate against a real
+case rather than reasoning about it.
+**should_have_been_caught_by:** nothing — the planned design was wrong and only
+execution revealed it. This is the fourth defect this week found by running
+something rather than reading it.
+
+**Status:** ACCEPTED as designed. Revisit if a deterministic bound on field
+degree becomes available.
+
+---
+
+## H6-H11 — `dag_audit.py` silently discarded any line it could not parse
+
+**Found:** 2026-08-26, by manual `sed` inspection while inserting U3.
+
+**What:** The auditor dropped any line that did not match its `ROW` regex, and
+any parsed row whose column count was not six. A line-wrapped table row fails
+**both**: its first fragment has no trailing pipe so `ROW` never matches, and its
+tail begins with a non-id cell so it is ignored as another table's row. The node
+vanished from the graph with no diagnostic of any kind.
+
+**Blast radius.** U2 was absent from the DAG for the entire week, together with
+its edges to P7(1) and C19. Every cone computation and bucket count produced
+before the repair ran on 47 rows, not 48 — including the committed
+`verification/v0-structural.txt` of 2026-08-25 and the eleven-node audit gap that
+was, at the time, the deliverable. The gap list happened to be unaffected (U2 is
+downstream-only), but that was luck, not design.
+
+**caught_by:** manual inspection, incidentally, while doing something else.
+**should_have_been_caught_by:** an assertion in the auditor.
+
+**Status:** FIXED in `checks/dag_audit.py`. The parser now keys on a **row
+opener** — any line beginning `| <node-id> |` is a claim row and must yield
+exactly six columns, or it is a structural failure with the line number and node
+id named. Rows whose first cell is not a node id (the five-column imports table)
+are ignored as before. Verified by red test: wrapping U2 across two lines yields
+`STRUCTURAL FAIL`, `malformed: 1`, exit 1, naming U2 at line 75; a stray pipe
+inside a cell is caught as 7 columns; the well-formed file reports `malformed: 0`
+and exit 0.
+
+**Note on the fix.** The first attempt added a column-count check and the red
+test still passed — a wrapped row never reaches a column count. The defect was
+not a wrong check but a **missing** one. Every silent `continue` in a parser is
+an unstated assumption that the skipped line does not matter; `dag_audit.py` had
+three, and one was load-bearing. This is the general lesson, larger than the
+specific bug.
