@@ -7,3 +7,4 @@ venv/
 
 # The paper is someone else's copyright. Track it by arXiv id, not by blob.
 paper/*.pdf
+paper/*.pdf
