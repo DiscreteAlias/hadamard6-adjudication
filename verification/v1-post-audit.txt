@@ -1,0 +1,23 @@
+# DAG audit — dag.md
+
+rows: 51   buckets: {'DEF': 8, 'MECH': 12, 'ARG': 29, 'IMPORT': 2}
+counter[main]: 1..26 — dense, no gaps
+counter[supplement]: 1..20 — dense, no gaps
+cycles: 0   dangling refs: 0   duplicate ids: 0
+
+C26 cone: 37 of 51 nodes
+  outside the cone (14): D3 S10 S11 S12 S13 S14 S20 S5 S6 S8 S9 T21 U2 U3
+  orphans (nothing depends on them): D3 S12 S14 S20 T21 U2 U3
+
+audit gap — in C26 cone but not under C19 (14):
+  C26[ARG]  D20[DEF]  D23[IMPORT]  P24[ARG]  P25[ARG]  S15[ARG]  S16[ARG]  S17[MECH]  S18[ARG]  S19[ARG]  S7[MECH]  T22[ARG]  U4[ARG]  U5[ARG]
+
+MECH nodes outside the cone (verifying these proves nothing about C26): D3 S10 S13 S5 U3
+
+page coverage: 48/50 pages claimed by some node
+  UNCOVERED (omission risk — nothing in the DAG describes these):
+    p 1
+    p 50
+
+STRUCTURAL PASS
+NOT CHECKED: fidelity of any row to the paper. See VERIFY.md.
