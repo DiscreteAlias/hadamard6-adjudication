@@ -1,13 +1,21 @@
 ---
-title: Where does the machine-checked part stop?
-project: hadamard6
-kind: result
-published: 2026-08-29
-workPeriod: 2026-08-22 to 2026-08-29
-tier: 1
-access: public
-summary: A protocol for adjudicating partially formalized proofs, its output on a fifty-page unrefereed claim, and its own error rate.
+title: "Where does the machine-checked part stop?"
+subtitle: "A protocol for adjudicating partially formalized proofs, and what it found in one"
+date: 2026-08-29
+author: Julian Miller
+tags: [formal-verification, lean, adjudication, mathematics, ai-assisted-proofs]
 repo: https://github.com/DiscreteAlias/hadamard6-adjudication
+summary: >
+  A five-day structural adjudication of an unrefereed fifty-page preprint
+  shipping a companion Lean 4 audit. The artifact verifies; the headline claim
+  rests on fourteen nodes outside it. Includes the protocol, the tooling, and a
+  full account of the protocol's own error rate.
+---
+
+# Where does the machine-checked part stop?
+
+*A protocol for adjudicating partially formalized proofs, and what it found in one.*
+
 ---
 
 A solo operator with a protocol can establish, in a week, exactly where a
@@ -19,12 +27,13 @@ nothing below should be read as evidence either way. What I checked is the
 *shape* of the argument: which results depend on which, which of them the
 companion proof assistant covers, and which it does not.
 
-Everything is in a public repository: **[github.com/DiscreteAlias/hadamard6-adjudication](https://github.com/DiscreteAlias/hadamard6-adjudication)**.
+Everything is in a public repository:
+**[github.com/DiscreteAlias/hadamard6-adjudication](https://github.com/DiscreteAlias/hadamard6-adjudication)**.
 Commits are linked throughout, including the ones where this went wrong.
 
 ---
 
-## The problem
+## 1. The problem
 
 Formal verification has stopped being all-or-nothing. The normal case now is a
 paper with a companion Lean or Rocq artifact covering *part* of its argument,
@@ -50,7 +59,7 @@ repeatable way to say what a result establishes.
 
 ---
 
-## The subject
+## 2. The subject
 
 **arXiv:2608.18053**, "A Complete Classification of Complex Hadamard Matrices of
 Order Six" (Cárdenes Wuttig & Tindall), v1 dated 18 August 2026. Fifty pages.
@@ -68,9 +77,9 @@ It did dominate. The commitment held.
 
 ---
 
-## The protocol
+## 3. The protocol
 
-### The claim DAG
+### 3.1 The claim DAG
 
 One row per numbered result: id, short statement, dependencies, bucket, status,
 notes. Four buckets:
@@ -88,9 +97,9 @@ argument.
 
 Extraction was done by an agent reading the full paper. That output is an
 *unverified input*, and treating it as ground truth would be the same error the
-whole exercise exists to avoid. the fidelity pass and the error log below are about what it takes to trust it.
+whole exercise exists to avoid. §3.5 and §5 are about what it takes to trust it.
 
-### The structural auditor
+### 3.2 The structural auditor
 
 [`dag_audit.py`](https://github.com/DiscreteAlias/hadamard6-adjudication/blob/main/checks/dag_audit.py)
 is paper-agnostic: give it the DAG, a page count, the headline node, and the
@@ -109,12 +118,12 @@ handle is page citations: collect every row's, then ask which pages nobody
 claims.
 
 First run: pages 1, 34, 41 and 50. One and 50 were title and back matter.
-Thirty-four and 41 were inside the supplemental proofs, and both mattered (below).
+Thirty-four and 41 were inside the supplemental proofs, and both mattered (§4.3).
 
 This is a cheap trick and it is the only mechanical purchase I know of on the
 omission problem.
 
-### The dependency cone
+### 3.3 The dependency cone
 
 Given the headline claim, compute its ancestor set. Everything outside is not
 load-bearing for it.
@@ -127,7 +136,7 @@ the cone — verifying them would have produced certificates proving nothing abo
 the headline. The auditor prints that list explicitly, because the temptation is
 always to verify what is easy rather than what is load-bearing.
 
-### The audit gap
+### 3.4 The audit gap
 
 This is the piece I have not seen done elsewhere, and it is the reusable idea.
 
@@ -141,12 +150,12 @@ across paper revisions.
 
 It is also the number to watch while making corrections. Three times I predicted
 what an edit would do to the gap, ran the auditor, and got a different number.
-Each time the prediction was wrong for an instructive reason (below).
+Each time the prediction was wrong for an instructive reason (§5).
 
-### Adversarial fidelity
+### 3.5 Adversarial fidelity
 
 Structural consistency is not fidelity. A confabulated DAG passes every check in
-the structural checks — the rows cohere with each other; nothing checks them against the paper.
+§3.2 — the rows cohere with each other; nothing checks them against the paper.
 
 Two rules did the work.
 
@@ -166,7 +175,7 @@ nodes to fourteen
 Three of the four additions were dependencies no structural check could have
 found — two unnumbered, one hidden inside a prose equation range.
 
-### The Lean boundary check
+### 3.6 The Lean boundary check
 
 The mechanical layer is nearly foolproof and produces artifacts. `lake build`.
 `#print axioms` on every public endpoint against the standard known-consistent
@@ -190,9 +199,9 @@ inhabitant.
 
 ---
 
-## What it found
+## 4. What it found
 
-### The Lean artifact does what it claims
+### 4.1 The Lean artifact does what it claims
 
 First, because it is the most important finding and because saying it first is
 what earns the right to say the rest.
@@ -219,7 +228,7 @@ The definitions hold up:
 This is a real formalization. Anyone can now cite that without reading 107
 modules.
 
-### Fourteen nodes past the kernel
+### 4.2 Fourteen nodes past the kernel
 
 The formalized chain ends at one node; the headline claim sits in a cone of 37,
 of which fourteen lie outside it:
@@ -240,9 +249,10 @@ That is a smaller claim than "nobody has stated the gap," and it is the true one
 What the protocol adds is precision: six categories becomes fourteen named nodes
 with buckets, updating mechanically as the map is corrected.
 
-### Five dependencies the numbering does not expose
+### 4.3 Five dependencies the numbering does not expose
 
-The part that is unambiguously new. Each is checkable in minutes with the PDF.
+These are observations about **v1**, the version adjudicated. Each is checkable
+in minutes with the PDF.
 
 **A four-sentence iff with no number (p43).** Between one proof and the next
 lemma sits a paragraph defining a "good" row pair and a "directionally bad"
@@ -277,7 +287,41 @@ The pattern underneath all five: **the extraction recorded where results were
 instances leaving a whole page unclaimed. Narrower off-by-ones were invisible and
 had to be read for.
 
-### The hypothesis that is not the one on the page
+#### What happened next, stated precisely
+
+I sent these to the corresponding author before publishing. The reply came the
+same day, from both authors, accepting all five — none was a misreading. But the
+outcome splits, and inflating it would undo the point of the exercise.
+
+**Three had already been fixed.** The reply attached a revised manuscript dated
+the day *before* my note, in which the unnumbered intersection claim is removed,
+the guard list is given directly, and the definition in question now explicitly
+distinguishes itself from the authors' own construction output. Those are not
+attributable to this work. The authors and I converged independently, and they
+got there first.
+
+**Two changed as a result.** The p43 iff and the p42 invariance sentence remained
+unnumbered in the revision. The authors state they will promote both to numbered
+statements.
+
+**And one editorial note was accepted:** that the paper's description of what its
+Lean audit establishes should refer to the concrete structural reductions derived
+within Lean, rather than saying Lean proves the two published inputs themselves.
+
+So the defensible claim is narrow: **two load-bearing unnumbered steps promoted
+to numbered statements, and one scope-accuracy correction to how a formalization
+describes itself.** Not a discovery of errors — nothing here was wrong. Steps
+that carried weight without carrying numbers, which anyone building on the paper
+would otherwise have had to reconstruct.
+
+Two things are worth drawing out of that. The last catch is the one the protocol
+is actually for: the authors' *repository documentation* was more careful than
+their *paper* about what the formalization assumes, and the finding was the gap
+between the two. And the note went out before publication, which is why this was
+a correspondence rather than a defence — and why I learned that three of five
+findings were already stale before asserting them in public.
+
+### 4.4 The hypothesis that is not the one on the page
 
 The formalization takes two literature-facing hypotheses. The second, printed
 from the build:
@@ -303,7 +347,7 @@ fidelity for the first input, fidelity of the concrete form to the cited
 literature, and fidelity of the Lean statement to the paper's conclusion. The
 third is discharged. The first two are not.
 
-### The blind track
+### 4.5 The blind track
 
 Running alongside, in a separate session that never opened the paper, the
 dependency graph, or the repository's own README: a search for a 6×6 complex
@@ -334,7 +378,7 @@ instrument on the way.**
 
 ---
 
-## What the protocol got wrong
+## 5. What the protocol got wrong
 
 This is the section that makes the piece worth reading. All of it happened; all
 of it is in the repository's history.
@@ -389,7 +433,7 @@ disagreements are where the information is.
 
 ---
 
-## Scope — what was not done
+## 6. Scope — what was not done
 
 Prominent rather than buried, because a finding is only as good as its stated
 boundary.
@@ -407,9 +451,13 @@ boundary.
   independent extraction was judged not worth a full re-read. A judgment, not a
   verification.
 
+Everything above refers to **v1**. A revised manuscript exists and a revised
+repository was announced. A revision is a new adjudication, not a patch to a
+closed one; nothing here has been amended against it.
+
 ---
 
-## What transfers
+## 7. What transfers
 
 `dag_audit.py` is paper-agnostic today. The DAG format and four-bucket taxonomy
 are general. The audit-gap computation applies to any paper with a partial
@@ -435,24 +483,22 @@ produces them.
 The claim I am willing to defend is narrow. Not that this paper is right or
 wrong. That the boundary of its machine-checked core is now a list of fourteen
 named nodes rather than a paragraph, that five load-bearing steps its numbering
-does not expose are now identified, and that the procedure producing both is
+did not expose are now identified, and that the procedure producing both is
 reusable and has a measured error rate.
 
 ---
 
 ## Disclosure
 
-The five findings in the section on hidden dependencies, the p31 wording note in
-the hypothesis section, and a smaller
-section-range slip were sent to the corresponding author on 29 August 2026, ahead
-of this write-up. No claims about correctness were made, then or here. Any
-response will be recorded in the repository
-([`a1888e5`](https://github.com/DiscreteAlias/hadamard6-adjudication/commit/a1888e5)).
+The findings in §4.3, the wording note in §4.4, and a smaller section-range slip
+were sent to the corresponding author on 29 August 2026, ahead of this write-up.
+No claims about correctness were made, then or here. The response, and the split
+between what it changed and what it had already addressed, is recorded in
+[`slag/verdict.md`](https://github.com/DiscreteAlias/hadamard6-adjudication/blob/main/slag/verdict.md).
 
-The sealed verdict is at
-[`slag/verdict.md`](https://github.com/DiscreteAlias/hadamard6-adjudication/blob/main/slag/verdict.md);
-the full defect log at
-[`slag/harness-defects.md`](https://github.com/DiscreteAlias/hadamard6-adjudication/blob/main/slag/harness-defects.md).
+The repository contains the dependency graph, the auditor, the verification
+record including its corrections, and the log of all eleven instrumentation
+defects.
 
 This write-up was drafted with AI assistance, as was the adjudication itself. So
 was the paper it examines. That symmetry is worth stating rather than eliding.

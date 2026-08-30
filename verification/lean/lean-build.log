@@ -1,0 +1,334 @@
+✔ [1704/1714] Built Hadamard6.Basic (8.4s)
+✔ [1706/1714] Built Hadamard6.FiniteDilation (2.0s)
+✔ [1707/1714] Built Hadamard6.Strata (1.7s)
+✔ [1709/1714] Built Hadamard6.Blocks (1.7s)
+✔ [1710/1714] Built Hadamard6.PublishedInputs (1.6s)
+✔ [1712/1716] Built Hadamard6.CubicRoots (1.9s)
+✔ [1713/1716] Built Hadamard6.FourierBlocks (1.6s)
+✔ [1714/1716] Built Hadamard6.PhaseEquivalence (2.2s)
+✔ [1715/1724] Built Hadamard6.BlockSwapMatrices (1.7s)
+✔ [1752/1758] Built Hadamard6.TwoCircle (1.9s)
+✔ [1754/1759] Built Hadamard6.ExceptionalFibre (2.3s)
+✔ [1757/1759] Built Hadamard6.QuotientAlgebra (2.1s)
+✔ [1758/1858] Built Hadamard6.GramInvariant (2.1s)
+ℹ [1958/1967] Built Hadamard6.QuotientMobius (2.5s)
+info: Hadamard6/QuotientMobius.lean:30:4: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [1962/1967] Built Hadamard6.UnitSymmetric (1.9s)
+✔ [1963/1967] Built Hadamard6.QuotientReal (3.3s)
+✔ [1964/1967] Built Hadamard6.QuotientAllocation (3.1s)
+✔ [1965/1967] Built Hadamard6.CandidateFibre (2.3s)
+✔ [1966/2033] Built Hadamard6.FibreGauge (2.5s)
+✔ [2905/2912] Built Hadamard6.FactorAllocation (4.8s)
+✔ [2906/2915] Built Hadamard6.AllocationToMobius (2.8s)
+✔ [2907/2915] Built Hadamard6.ModulusIdentity (2.0s)
+✔ [2908/2916] Built Hadamard6.HaagerupFromFibre (3.9s)
+✔ [2909/2916] Built Hadamard6.QuotientGoodRow (3.1s)
+✔ [2910/2920] Built Hadamard6.FibreNormIdentity (2.5s)
+✔ [2911/2923] Built Hadamard6.DependentFibre (2.4s)
+✔ [2912/2923] Built Hadamard6.InfiniteFibreRegular (2.7s)
+✔ [2913/2925] Built Hadamard6.InfiniteFibreExceptional (1.9s)
+✔ [2914/2925] Built Hadamard6.DependentAlgebra (4.5s)
+✔ [2915/2929] Built Hadamard6.BlockGram (1.0s)
+✔ [2916/2929] Built Hadamard6.DependentBranch (2.5s)
+✔ [2917/2929] Built Hadamard6.BlockSwapCore (1.8s)
+✔ [2918/2929] Built Hadamard6.BlockCompletion (2.5s)
+✔ [2919/2929] Built Hadamard6.DependentFourier (3.1s)
+✔ [2920/2932] Built Hadamard6.QuotientEndpoints (11s)
+✔ [2921/2932] Built Hadamard6.InfiniteFibreTrichotomy (2.0s)
+✔ [2922/2932] Built Hadamard6.FibreSymmetry (3.7s)
+✔ [2923/2937] Built Hadamard6.ColumnFibreSymmetry (2.5s)
+✔ [2924/2938] Built Hadamard6.BlockOppositePair (2.0s)
+✔ [2925/2938] Built Hadamard6.EquivalentStrata (2.1s)
+✔ [2926/2938] Built Hadamard6.BlockFibreOutcome (2.2s)
+✔ [2927/2938] Built Hadamard6.FourierCoordinateAllocation (2.1s)
+✔ [2928/2938] Built Hadamard6.VanishingMinorReduction (10s)
+✔ [2929/2940] Built Hadamard6.BlockNormalization (2.5s)
+✔ [2930/2940] Built Hadamard6.FiniteCornerFromBlocks (2.7s)
+✔ [2931/2940] Built Hadamard6.PublishedConsequences (1.8s)
+✔ [2932/2940] Built Hadamard6.NormalizedBlockOpposite (3.4s)
+✔ [2933/2940] Built Hadamard6.DephasedFiniteCorner (2.5s)
+✔ [2934/2940] Built Hadamard6.FourierNormalForm (2.6s)
+✔ [2935/2940] Built Hadamard6.BlockFibreNormalizedOutcome (2.4s)
+✔ [2936/2940] Built Hadamard6.BlockPermutations (2.4s)
+✔ [2937/2940] Built Hadamard6.FourierChartAssembly (2.4s)
+✔ [2938/2944] Built Hadamard6.BlockSwapInfiniteSquare (2.4s)
+✔ [2939/2946] Built Hadamard6.BlockSwapTheorem (2.5s)
+✔ [2940/2946] Built Hadamard6.FourierAutocorrelation (2.9s)
+✔ [2941/2949] Built Hadamard6.FourierCoefficientFormulas (3.2s)
+✔ [2942/2949] Built Hadamard6.FourierBlockCoordinates (3.5s)
+✔ [2943/2952] Built Hadamard6.FourierForcedCompletion (8.3s)
+✔ [2944/2952] Built Hadamard6.FourierUnmixed (3.4s)
+✔ [2945/2952] Built Hadamard6.HadamardThreeFourier (3.3s)
+✔ [2946/2952] Built Hadamard6.TaoOrbit (6.7s)
+✔ [2947/2952] Built Hadamard6.FourierCoreFromNormalization (2.6s)
+✔ [2948/2952] Built Hadamard6.TaoAtlas (7.5s)
+✔ [2949/2952] Built Hadamard6.SimultaneousFourierNormalization (3.2s)
+✔ [2950/2952] Built Hadamard6.Classification (2.4s)
+✔ [2951/2981] Built Hadamard6.ConcreteClassification (2.3s)
+✔ [3455/3458] Built Hadamard6.H2CanonicalForm (4.4s)
+✔ [3456/3458] Built Hadamard6.H2BlockNormalization (4.0s)
+✔ [3457/3460] Built Hadamard6.H2CoreCaseAnalysis (8.0s)
+✔ [3458/3461] Built Hadamard6.KarlssonResidualBase (6.4s)
+✔ [3459/3462] Built Hadamard6.KarlssonResidualCompactification (38s)
+✔ [3460/3463] Built Hadamard6.KarlssonResidualCayley (227s)
+✔ [3461/3464] Built Hadamard6.KarlssonResidualLeaf0000 (42s)
+✔ [3462/3465] Built Hadamard6.KarlssonResidualLeaf0001 (43s)
+✔ [3463/3466] Built Hadamard6.KarlssonResidualLeaf0010 (45s)
+✔ [3464/3467] Built Hadamard6.KarlssonResidualLeaf0011 (45s)
+✔ [3465/3468] Built Hadamard6.KarlssonResidualLeaf01 (34s)
+✔ [3466/3469] Built Hadamard6.KarlssonResidualLeaf10 (39s)
+✔ [3467/3470] Built Hadamard6.KarlssonResidualLeaf1100 (37s)
+✔ [3468/3472] Built Hadamard6.KarlssonResidualLeaf1101 (43s)
+✔ [3469/3478] Built Hadamard6.KarlssonResidualLeaf1110 (37s)
+✔ [3470/3479] Built Hadamard6.KarlssonResidualLeaf1111 (46s)
+✔ [3471/3479] Built Hadamard6.KarlssonQuadraticResultant (2.7s)
+✔ [3472/3480] Built Hadamard6.KarlssonResidualCertificate (2.1s)
+ℹ [3473/3482] Built Hadamard6.KarlssonResidualGlobal (7.6s)
+info: Hadamard6/KarlssonResidualGlobal.lean:26:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:34:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:43:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:51:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:59:16: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:68:16: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:78:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:86:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:95:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:103:20: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/KarlssonResidualGlobal.lean:142:0: 'Hadamard6.karlssonSharedResidual_cayley_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3474/3483] Built Hadamard6.KarlssonCayley (3.8s)
+ℹ [3475/3487] Built Hadamard6.KarlssonResultantNonvanishing (2.5s)
+info: Hadamard6/KarlssonResultantNonvanishing.lean:68:0: 'Hadamard6.karlssonHorizontalUnitResultant_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/KarlssonResultantNonvanishing.lean:69:0: 'Hadamard6.karlssonVerticalUnitResultant_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3476/3487] Built Hadamard6.KarlssonWitnessBounds (3.5s)
+✔ [3477/3487] Built Hadamard6.KarlssonWitnessPolynomials (9.1s)
+ℹ [3478/3487] Built Hadamard6.LeadingFibreCriterion (3.6s)
+info: Hadamard6/LeadingFibreCriterion.lean:181:2: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3479/3489] Built Hadamard6.KarlssonWitnessResultant10 (157s)
+✔ [3480/3489] Built Hadamard6.KarlssonWitnessResultant8 (163s)
+✔ [3481/3489] Built Hadamard6.KarlssonWitnessResultant6 (199s)
+✔ [3482/3489] Built Hadamard6.KarlssonWitnessResultant4 (176s)
+✔ [3483/3489] Built Hadamard6.KarlssonChartBoundary (3.0s)
+ℹ [3484/3492] Built Hadamard6.KarlssonWitnessResultants (2.5s)
+info: Hadamard6/KarlssonWitnessResultants.lean:130:0: 'Hadamard6.karlssonWitness4_has_no_unit_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/KarlssonWitnessResultants.lean:131:0: 'Hadamard6.karlssonWitness6_has_no_unit_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/KarlssonWitnessResultants.lean:132:0: 'Hadamard6.karlssonWitness8_has_no_unit_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/KarlssonWitnessResultants.lean:133:0: 'Hadamard6.karlssonWitness10_has_no_unit_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [3485/3492] Built Hadamard6.KarlssonMixedBlocks (31s)
+✔ [3487/3496] Built Hadamard6.KarlssonFourierSeam (10s)
+✔ [3488/3496] Built Hadamard6.KarlssonGlobalModel (109s)
+ℹ [3489/3496] Built Hadamard6.H2KarlssonCore (18s)
+info: Hadamard6/H2KarlssonCore.lean:760:14: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/H2KarlssonCore.lean:767:16: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/H2KarlssonCore.lean:807:14: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+info: Hadamard6/H2KarlssonCore.lean:814:16: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+✔ [3490/3496] Built Hadamard6.FourierSeamCertificate (353s)
+✔ [3491/3496] Built Hadamard6.KarlssonParametrizationStatement (33s)
+⚠ [3492/3496] Built Hadamard6.H2DegenerateNormalization (4.4s)
+warning: Hadamard6/H2DegenerateNormalization.lean:236:2: `simp [h2Tail₀, h2Tail₁, h.dephased.2, hpair] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:236:2: Try this:
+  [apply] simp only [Fin.isValue, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:238:2: `rw [hz₃] at hentry`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 236!
+warning: Hadamard6/H2DegenerateNormalization.lean:269:2: `simp [h2Tail₀, h2Tail₃, h.dephased.2, hpair₂] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:269:2: Try this:
+  [apply] simp only [Fin.isValue, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:271:2: `rw [hz₃] at hentry`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 269!
+warning: Hadamard6/H2DegenerateNormalization.lean:269:2: `simp [h2Tail₀, h2Tail₃, h.dephased.2, hpair₂] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:269:2: Try this:
+  [apply] simp only [Fin.isValue, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:273:2: `have hcore :
+  h2CoreA K 0 0 * star (h2CoreC K 1 0) + h2CoreA K 0 1 * star (h2CoreC K 1 1) + h2CoreB K 0 0 * star (h2CoreD K 1 0) +
+      h2CoreB K 0 1 * star (h2CoreD K 1 1) =
+    0 :=
+  by
+  simpa [h2CoreA, h2CoreB, h2CoreC, h2CoreD, h2TailPairFirst, h2TailPairSecond, h2Tail₀, h2Tail₁, h2Tail₂, h2Tail₃,
+    add_assoc] using hentry`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 269!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:310:2: `rw [hz₁] at hentry`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:312:2: `have hcross :
+  star (h2CoreA K 0 0) * h2CoreB K 0 0 + star (h2CoreA K 1 0) * h2CoreB K 1 0 + star (h2CoreB K 0 0) * h2CoreA K 0 0 +
+      star (h2CoreB K 1 0) * h2CoreA K 1 0 =
+    -2 :=
+  by
+  have hcore :
+    star (h2CoreA K 0 0) * h2CoreB K 0 0 + star (h2CoreA K 1 0) * h2CoreB K 1 0 + star (h2CoreC K 0 0) * h2CoreD K 0 0 +
+        star (h2CoreC K 1 0) * h2CoreD K 1 0 =
+      -2 :=
+    by
+    have hcoreZero :
+      2 +
+          (star (h2CoreA K 0 0) * h2CoreB K 0 0 + star (h2CoreA K 1 0) * h2CoreB K 1 0 +
+              star (h2CoreC K 0 0) * h2CoreD K 0 0 +
+            star (h2CoreC K 1 0) * h2CoreD K 1 0) =
+        0 :=
+      by
+      simpa [h2CoreA, h2CoreB, h2CoreC, h2CoreD, h2TailPairFirst, h2TailPairSecond, h2Tail₀, h2Tail₁, h2Tail₂, h2Tail₃,
+        add_assoc] using hentry
+    linear_combination hcoreZero
+  rw [hCB, hDA] at hcore
+  exact hcore`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:333:2: `have ha00 : h2CoreA K 0 0 * star (h2CoreA K 0 0) = 1 := by
+  simpa [h2CoreA] using unit_mul_star_eq_one_deg (h.hadamard.1 h2Tail₀ h2Tail₀)`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:336:2: `have hb00 : h2CoreB K 0 0 * star (h2CoreB K 0 0) = 1 := by
+  simpa [h2CoreB] using unit_mul_star_eq_one_deg (h.hadamard.1 h2Tail₀ h2Tail₂)`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:339:2: `have ha10 : h2CoreA K 1 0 * star (h2CoreA K 1 0) = 1 := by
+  simpa [h2CoreA] using unit_mul_star_eq_one_deg (h.hadamard.1 h2Tail₁ h2Tail₀)`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+warning: Hadamard6/H2DegenerateNormalization.lean:308:2: `simp [h2Tail₀, h2Tail₂, h.dephased.1, hphase] at hentry` is a flexible tactic modifying `hentry`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2DegenerateNormalization.lean:308:2: Try this:
+  [apply] simp only [Fin.isValue, star_sub, RCLike.star_def] at hentry
+info: Hadamard6/H2DegenerateNormalization.lean:342:2: `have hb10 : h2CoreB K 1 0 * star (h2CoreB K 1 0) = 1 := by
+  simpa [h2CoreB] using unit_mul_star_eq_one_deg (h.hadamard.1 h2Tail₁ h2Tail₂)`
+uses `hentry`, which was modified by the flexible tactic `simp` on line 308!
+✔ [3493/3496] Built Hadamard6.KarlssonContainment (2.7s)
+⚠ [3494/3496] Built Hadamard6.H2KarlssonParametrization (15s)
+warning: Hadamard6/H2KarlssonParametrization.lean:350:4: `simp [Matrix.mul_apply, Fin.sum_univ_two, hb, hc0] at h00 h11` is a flexible tactic modifying `h00`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2KarlssonParametrization.lean:351:4: `rcases (sq_eq_one_iff).mp (by simpa [pow_two] using h00) with ha | ha`
+uses `h00`, which was modified by the flexible tactic `simp` on line 350!
+warning: Hadamard6/H2KarlssonParametrization.lean:350:4: `simp [Matrix.mul_apply, Fin.sum_univ_two, hb, hc0] at h00 h11` is a flexible tactic modifying `h11`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2KarlssonParametrization.lean:352:6: `rcases (sq_eq_one_iff).mp (by simpa [pow_two] using h11) with hd | hd`
+uses `h11`, which was modified by the flexible tactic `simp` on line 350!
+warning: Hadamard6/H2KarlssonParametrization.lean:350:4: `simp [Matrix.mul_apply, Fin.sum_univ_two, hb, hc0] at h00 h11` is a flexible tactic modifying `h11`. Try `simp?` and use the suggested `simp only [...]`. Alternatively, use `suffices` to explicitly state the simplified form.
+
+Note: This linter can be disabled with `set_option linter.flexible false`
+info: Hadamard6/H2KarlssonParametrization.lean:352:6: `rcases (sq_eq_one_iff).mp (by simpa [pow_two] using h11) with hd | hd`
+uses `h11`, which was modified by the flexible tactic `simp` on line 350!
+✔ [3495/3496] Built Hadamard6.HadamardQuotient (2.7s)
+ℹ [3496/3496] Built Hadamard6.PaperTheorem (2.6s)
+info: Hadamard6/PaperTheorem.lean:143:0: def Hadamard6.PublishedCubicRootCriterion : Prop :=
+∀ (K : Mat6), IsHadamard K → HasNoninitialCubicRootRowAndColumn K → IsTaoOrbit K ∨ IsKarlssonConcrete K
+info: Hadamard6/PaperTheorem.lean:144:0: def Hadamard6.KarlssonRawOrSeamCoverage : Prop :=
+∀ (H : Mat6),
+  IsHadamard H → HasHadamardTwoByTwo H → Nonempty (CanonicalKarlssonRawPresentation H) ∨ IsAffineFourierSeam H
+info: Hadamard6/PaperTheorem.lean:146:0: 'Hadamard6.paper_failed_corner_search_forces_karlsson_or_tao' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:147:0: 'Hadamard6.paper_karlsson_has_finite_corner' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:148:0: 'Hadamard6.paper_tao_has_finite_corner' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:149:0: 'Hadamard6.paper_finite_corner_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:150:0: 'Hadamard6.paper_nonexceptional_completed_dilation_recovery' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:151:0: 'Hadamard6.paper_finite_corner_completeness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:152:0: 'Hadamard6.paper_finite_corner_soundness' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:153:0: 'Hadamard6.paper_total_output_corollary' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: Hadamard6/PaperTheorem.lean:154:0: 'Hadamard6.paper_classification_corollary' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (3496 jobs).
